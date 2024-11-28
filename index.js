@@ -43,25 +43,6 @@ function connect() {
 //Create a mongodb instance
 let mongoDatabase = connect();
 
-//Retrieve all lessons
-app.get("/lessons/", async (req, res) => {
-    try {
-        const courses = database.collection("lessons")
-        const result = await courses.find({}).toArray()
-        const response = result.map((item) => {
-            return {
-                ...item,
-                id: item._id.toString()
-            }
-
-        })
-        res.json(response)
-    } catch (error) {
-        console.error(error.message);
-
-    }
-});
-
 
 /*Create new lesson*/
 app.post('/lessons/', async (req, res) => {
@@ -88,4 +69,21 @@ app.post('/lessons/', async (req, res) => {
 
 });
 
+//Retrieve all lessons
+app.get("/lessons/", async (req, res) => {
+    try {
+        const courses = database.collection("lessons")
+        const result = await courses.find({}).toArray()
+        const response = result.map((item) => {
+            return {
+                ...item,
+                id: item._id.toString()
+            }
 
+        })
+        res.json(response)
+    } catch (error) {
+        console.error(error.message);
+
+    }
+});
