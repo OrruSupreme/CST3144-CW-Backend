@@ -176,3 +176,14 @@ app.delete('/lessons/:id', async (req, res) => {
     return res.status(204).send()
 })
 
+//search route
+app.get('/search/', async (req, res) => {
+    const courses = await database.collection("courses").find({
+        subject: { $regex: `^${req.query.search_term}`, $options: "i" }
+    }).toArray();
+    const result = courses.map((item) => {
+        return { ...item, id: item._id.toString() }
+    })
+    return res.json(result);
+})
+
