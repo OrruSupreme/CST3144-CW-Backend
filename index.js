@@ -87,3 +87,54 @@ app.get("/lessons/", async (req, res) => {
 
     }
 });
+
+
+app.post('/order/', async (req, res) => {
+    if (req.body.hasOwnProperty('items') && req.body.items.length < 0 ) {
+        return res.status(400).json('You cannot checkout an empty cart')
+    }
+    const courses = database.collection("lessons");
+    req.body.items.map(async (item) => {
+        try {
+            const filter = { _id: new ObjectId(item.id) };
+
+            let course = await courses.findOne(filter)
+
+            if (item.quantity > course.space) {
+                return res.status(400).json(`Can't fulfill order as quantity specified for ${course.subject} beyond available stock!`);
+            }
+
+        }
+        /*if any error occurs in the try block the catch block will execute it*/
+        catch (error) {
+            //log error message on the console
+            console.error(error.message);
+            return res.status(400).json('Error occured whilte trying to fulfill order!')
+        }
+    })
+
+    const order = database.collection("order")
+
+    result = await order.insertOne(req.body);
+    try {
+        req.body.items.map(async (item) => {
+            const filter = { _id: new ObjectId(item.id) };
+            let course = await courses.findOne(filter)
+            const updateDoc = {
+                $set: {
+                    space: course.space > 0 ? course.space - item.quantity : 0
+                },
+            };
+            await courses.updateOne(filter, updateDoc);
+        });
+
+
+    } catch (error) {
+        console.error(error.message);
+    }
+
+    return res.json("Order completed succesfully");
+
+});
+
+
