@@ -178,7 +178,7 @@ app.delete('/lessons/:id', async (req, res) => {
 
 //search route
 app.get('/search/', async (req, res) => {
-    const courses = await database.collection("courses").find({
+    const courses = await database.collection("lessons").find({
         subject: { $regex: `^${req.query.search_term}`, $options: "i" }
     }).toArray();
     const result = courses.map((item) => {
