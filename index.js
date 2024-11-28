@@ -138,7 +138,7 @@ app.post('/order/', async (req, res) => {
 });
 
 
-/*setting up a put route to update course by id*/
+/*setting up a put route to update lessons attribute by id*/
 app.put('/lessons/:id', async (req, res) => {
     let course = {}
     try {
@@ -163,4 +163,16 @@ app.put('/lessons/:id', async (req, res) => {
     return res.status(200).json(course);
 })
 
+
+//deleteby id
+app.delete('/lessons/:id', async (req, res) => {
+    try {
+        const courses = database.collection("lessons");
+        const filter = { _id: new ObjectId(req.params.id) };
+        await courses.deleteOne(filter)
+    } catch (error) {
+        console.log(error)
+    }
+    return res.status(204).send()
+})
 
