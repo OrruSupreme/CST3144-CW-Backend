@@ -88,6 +88,18 @@ app.get("/lessons/", async (req, res) => {
     }
 });
 
+//get lesson by id
+app.get('/lessons/:id', async (req, res) => {
+    let course = {}
+    try {
+        const courses = database.collection("lessons");
+        const filter = { _id: new ObjectId(req.params.id) };
+        course = await courses.findOne(filter)
+    } catch (error) {
+        console.log(error)
+    }
+    return res.status(200).json(course);
+})
 
 app.post('/order/', async (req, res) => {
     if (req.body.hasOwnProperty('items') && req.body.items.length < 0 ) {
