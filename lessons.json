@@ -1,0 +1,9 @@
+[
+    { "topic": "biology 301", "location": "London", "price": 80, "space":5},
+    { "topic": "maths 101", "location": "Online", "price": 50, "space": 5},
+    { "topic": "french", "location": "France", "price": 90, "space": 5},
+    { "topic": "history", "location": "Egypt", "price": 23, "space":5},
+    { "topic": "CS50 2020", "location": "Kenya", "price": 65, "space":5},
+    { "topic": "humanities", "location": "Japan", "price": 45, "space":5},
+    { "topic": "English", "location": "United Kingdom", "price": 95, "space":5}
+]
