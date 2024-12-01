@@ -6,9 +6,12 @@ const path = require('path');
 var bodyParser = require('body-parser')
 const cors = require('cors');
 
-app.use(cors());
+app.use(cors({
+    origin: 'https://orrusupreme.github.io/CST3144-Coursework/'
+}));
 
 //Middleware setup
+app.use(express.json());
 app.use(express.static("docs"));
 app.use(bodyParser.json());
 
