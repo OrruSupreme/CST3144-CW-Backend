@@ -202,5 +202,5 @@ app.get('/search/', async (req, res) => {
     return res.json(result);
 })
 
-app.use(express.static("public"))
+app.use(express.static("public/images"))
 
