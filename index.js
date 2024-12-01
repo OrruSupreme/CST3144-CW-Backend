@@ -202,7 +202,7 @@ app.get('/search/', async (req, res) => {
     return res.json(result);
 })
 
-const img = path.resolve(process.cwd(), 'public');
+const img = path.resolve(__dirname, 'public');
 app.use('/images', express.static(img, {fallthrough: true}));
 
 app.use('/images', (req,res) =>{
