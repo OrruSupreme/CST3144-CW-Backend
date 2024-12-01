@@ -4,6 +4,9 @@ const { ObjectId, ReturnDocument } = require('mongodb');
 const app = express();
 const path = require('path');
 var bodyParser = require('body-parser')
+const cors = require('cors');
+
+app.use(cors());
 
 //Middleware setup
 app.use(express.static("docs"));
