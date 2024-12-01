@@ -23,7 +23,7 @@ app.use(reqLogger)
 
 
 app.listen(process.env.PORT || 4000, function () {
-    console.log('Server started at port 4000')
+    console.log(`Server listening on port ${port}`)
 })
 
 
