@@ -23,7 +23,7 @@ app.use(reqLogger)
 
 
 app.listen(process.env.PORT || 4000, function () {
-    console.log(`Server listening on port ${port}`)
+    console.log(`Server listening on port 4000`)
 })
 
 
@@ -194,7 +194,7 @@ app.delete('/lessons/:id', async (req, res) => {
 //search route
 app.get('/search/', async (req, res) => {
     const courses = await database.collection("lessons").find({
-        subject: { $regex: `^${req.query.search_term}`, $options: "i" }
+        topic: { $regex: `^${req.query.search_term}`, $options: "i" }
     }).toArray();
     const result = courses.map((item) => {
         return { ...item, id: item._id.toString() }
