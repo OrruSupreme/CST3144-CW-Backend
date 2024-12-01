@@ -164,7 +164,7 @@ app.put('/lessons/:id', async (req, res) => {
         console.log(course)
         const updateDoc = {
             $set: {
-                topic: req.body.subject || course.topic,
+                topic: req.body.topic || course.topic,
                 location: req.body.location || course.location,
                 price: req.body.price || course.price,
                 space: req.body.space || course.space
@@ -202,5 +202,5 @@ app.get('/search/', async (req, res) => {
     return res.json(result);
 })
 
-// app.use(express.static(public))
+app.use(express.static("public"))
 
