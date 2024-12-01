@@ -6,12 +6,9 @@ const path = require('path');
 var bodyParser = require('body-parser')
 const cors = require('cors');
 
-app.use(cors({
-    origin: 'https://orrusupreme.github.io/CST3144-Coursework/'
-}));
+app.use(cors());
 
 //Middleware setup
-app.use(express.json());
 app.use(express.static("docs"));
 app.use(bodyParser.json());
 
@@ -25,8 +22,8 @@ const reqLogger = (req, res, next) => {
 app.use(reqLogger)
 
 
-app.listen(process.env.PORT || 3000, function () {
-    console.log('Server started at port 3000')
+app.listen(process.env.PORT || 4000, function () {
+    console.log('Server started at port 4000')
 })
 
 
