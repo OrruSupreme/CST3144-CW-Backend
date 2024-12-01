@@ -108,7 +108,7 @@ app.post('/order/', async (req, res) => {
     if (req.body.hasOwnProperty('items') && req.body.items.length < 0 ) {
         return res.status(400).json('You cannot checkout an empty cart')
     }
-    const courses = database.collection("lessons");
+    const courses = database.collection("orders");
     req.body.items.map(async (item) => {
         try {
             const filter = { _id: new ObjectId(item.id) };
@@ -128,7 +128,7 @@ app.post('/order/', async (req, res) => {
         }
     })
 
-    const order = database.collection("order")
+    const order = database.collection("orders")
 
     result = await order.insertOne(req.body);
     try {
@@ -201,4 +201,6 @@ app.get('/search/', async (req, res) => {
     })
     return res.json(result);
 })
+
+// app.use(express.static(public))
 
