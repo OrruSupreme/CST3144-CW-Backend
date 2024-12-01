@@ -202,5 +202,9 @@ app.get('/search/', async (req, res) => {
     return res.json(result);
 })
 
-app.use(express.static("public/images"))
+const img = path.resolve(process.cwd(), 'public');
+app.use('/images', express.static(img, {fallthrough: true}));
 
+app.use('/images', (req,res) =>{
+    res.status(404).json({error:'Images not found'});
+} )
