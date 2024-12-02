@@ -120,9 +120,7 @@ app.post('/order/', async (req, res) => {
             }
 
         }
-        /*if any error occurs in the try block the catch block will execute it*/
         catch (error) {
-            //log error message on the console
             console.error(error.message);
             return res.status(400).json({err:'Error occured while trying to fulfill order!', error:error, errorMessage: error.message})
         }
@@ -146,6 +144,8 @@ app.post('/order/', async (req, res) => {
 
     } catch (error) {
         console.error(error.message);
+        return res.status(400).json({err:'Error occured while trying to fulfill order!', error:error, errorMessage: error.message})
+
     }
 
     return res.json("Order completed succesfully");
