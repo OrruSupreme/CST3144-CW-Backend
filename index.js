@@ -109,25 +109,42 @@ app.post('/order/', async (req, res) => {
         return res.status(400).json('You cannot checkout an empty cart')
     }
     const courses = database.collection("orders");
-    req.body.items.map(async (item) => {
+    // req.body.items.map(async (item) => {
+    //     try {
+    //         // const filter = { _id: new ObjectId(item.id) };
+    //         const filter = { _id: new ObjectId(item.id.trim()) };
+
+
+    //         let course = await courses.findOne(filter)
+    //         if (!course || !course?.space) {
+    //             return res.status(400).json({err:'Error occured while trying to fulfill order!', course:course });
+
+    //         }
+    //         if (item?.quantity > course?.space) {
+    //             return res.status(400).json(`Can't fulfill order as quantity specified for ${course?.topic} beyond available stock!`);
+    //         }
+
+    //     }
+    //     catch (error) {
+    //         console.error(error.message);
+    //         return res.status(400).json({err:'Error occured while trying to fulfill order!', error:error, errorMessage: error.message})
+    //     }
+    // })
+    for (const item of req.body.items) {
         try {
             const filter = { _id: new ObjectId(item.id) };
-
-            let course = await courses.findOne(filter)
+            const course = await courses.findOne(filter);
             if (!course || !course?.space) {
-                return res.status(400).json({err:'Error occured while trying to fulfill order!', course:course });
-
+                return res.status(400).json({ err: 'Error occurred while trying to fulfill order!1', course });
             }
             if (item?.quantity > course?.space) {
-                return res.status(400).json(`Can't fulfill order as quantity specified for ${course?.topic} beyond available stock!`);
+                return res.status(400).json(`Can't fulfill order as quantity specified for ${course?.topic} beyond available stock!1`);
             }
-
-        }
-        catch (error) {
+        } catch (error) {
             console.error(error.message);
-            return res.status(400).json({err:'Error occured while trying to fulfill order!', error:error, errorMessage: error.message})
+            return res.status(400).json({ err: 'Error occurred while trying to fulfill order!1', error });
         }
-    })
+    }
 
     const order = database.collection("orders")
 
