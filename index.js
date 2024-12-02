@@ -115,8 +115,8 @@ app.post('/order/', async (req, res) => {
 
             let course = await courses.findOne(filter)
 
-            if (item.quantity > course.space) {
-                return res.status(400).json(`Can't fulfill order as quantity specified for ${course.topic} beyond available stock!`);
+            if (item?.quantity > course?.space) {
+                return res.status(400).json(`Can't fulfill order as quantity specified for ${course?.topic} beyond available stock!`);
             }
 
         }
@@ -135,7 +135,7 @@ app.post('/order/', async (req, res) => {
             let course = await courses.findOne(filter)
             const updateDoc = {
                 $set: {
-                    space: course.space > 0 ? course.space - item.quantity : 0
+                    space: course?.space > 0 ? course?.space - item.quantity : 0
                 },
             };
             await courses.updateOne(filter, updateDoc);
