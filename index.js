@@ -114,7 +114,10 @@ app.post('/order/', async (req, res) => {
             const filter = { _id: new ObjectId(item.id) };
 
             let course = await courses.findOne(filter)
+            if (!course || !course?.space) {
+                return res.status(400).json({err:'Error occured while trying to fulfill order!', course:course });
 
+            }
             if (item?.quantity > course?.space) {
                 return res.status(400).json(`Can't fulfill order as quantity specified for ${course?.topic} beyond available stock!`);
             }
@@ -133,6 +136,10 @@ app.post('/order/', async (req, res) => {
         req.body.items.map(async (item) => {
             const filter = { _id: new ObjectId(item.id) };
             let course = await courses.findOne(filter)
+            if (!course || !course?.space) {
+                return res.status(400).json({err:'Error occured while trying to fulfill order!', course:course });
+
+            }
             const updateDoc = {
                 $set: {
                     space: course?.space > 0 ? course?.space - item.quantity : 0
