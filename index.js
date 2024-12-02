@@ -124,7 +124,7 @@ app.post('/order/', async (req, res) => {
         catch (error) {
             //log error message on the console
             console.error(error.message);
-            return res.status(400).json('Error occured whilte trying to fulfill order!')
+            return res.status(400).json({err:'Error occured while trying to fulfill order!', error:error, errorMessage: error.message})
         }
     })
 

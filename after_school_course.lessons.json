@@ -1,0 +1,99 @@
+[{
+  "_id": {
+    "$oid": "6749016cd52df3b614da35bb"
+  },
+  "topic": "Physics",
+  "location": "New York",
+  "price": "250",
+  "space": "5"
+},
+{
+  "_id": {
+    "$oid": "674905b1030f9a9287b09523"
+  },
+  "topic": "Biology",
+  "location": "Nigeria",
+  "price": 250,
+  "space": 5
+},
+{
+  "_id": {
+    "$oid": "674905b1030f9a9287b09524"
+  },
+  "topic": "Mathematics",
+  "location": "Online",
+  "price": 50,
+  "space": 5
+},
+{
+  "_id": {
+    "$oid": "674905b1030f9a9287b09525"
+  },
+  "topic": "french",
+  "location": "France",
+  "price": 90,
+  "space": 5
+},
+{
+  "_id": {
+    "$oid": "674905b1030f9a9287b09526"
+  },
+  "topic": "history",
+  "location": "Egypt",
+  "price": 23,
+  "space": 5
+},
+{
+  "_id": {
+    "$oid": "674905b1030f9a9287b09527"
+  },
+  "topic": "Economics",
+  "location": "Kenya",
+  "price": 65,
+  "space": 5
+},
+{
+  "_id": {
+    "$oid": "674905b1030f9a9287b09528"
+  },
+  "topic": "Chemistry",
+  "location": "Japan",
+  "price": 45,
+  "space": 5
+},
+{
+  "_id": {
+    "$oid": "674905b1030f9a9287b09529"
+  },
+  "topic": "English Studies",
+  "location": "UK",
+  "price": 95,
+  "space": 5
+},
+{
+  "_id": {
+    "$oid": "674be2e5c8d62fcc6787ad8e"
+  },
+  "topic": "Music",
+  "location": "London",
+  "price": 400,
+  "space": 5
+},
+{
+  "_id": {
+    "$oid": "674be30ec8d62fcc6787ad8f"
+  },
+  "topic": "Agriculture",
+  "location": "Mauritius",
+  "price": 350,
+  "space": 5
+},
+{
+  "_id": {
+    "$oid": "674c3af6ee1615f5b1a7278e"
+  },
+  "topic": "Finance",
+  "location": "Chicago",
+  "price": 300,
+  "space": 5
+}]
